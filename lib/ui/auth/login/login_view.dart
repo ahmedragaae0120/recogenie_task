@@ -34,7 +34,7 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: const Text(AppStrings.login),
       ),
-      body: BlocConsumer(
+      body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
             toastMessage(

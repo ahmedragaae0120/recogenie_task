@@ -36,7 +36,7 @@ class _SignupViewState extends State<SignupView> {
       appBar: AppBar(
         title: const Text(AppStrings.register),
       ),
-      body: BlocConsumer(
+      body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is SignupSuccess) {
             toastMessage(

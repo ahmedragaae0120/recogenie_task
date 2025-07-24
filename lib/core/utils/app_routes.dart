@@ -15,11 +15,11 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> get routes {
     return {
-      login: (context) => BlocProvider(
+      login: (context) => BlocProvider<AuthCubit>(
             create: (context) => getIt<AuthCubit>(),
             child: const LoginView(),
           ),
-      signup: (context) => BlocProvider(
+      signup: (context) => BlocProvider<AuthCubit>(
             create: (context) => getIt<AuthCubit>(),
             child: const SignupView(),
           ),

@@ -5,10 +5,11 @@ import 'package:recogenie_task/firebase_options.dart';
 import 'package:recogenie_task/my_app.dart';
 
 void main() async {
-  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  configureDependencies();
+
   runApp(const MyApp());
 }

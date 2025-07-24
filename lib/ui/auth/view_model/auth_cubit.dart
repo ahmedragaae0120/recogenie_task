@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(LoginSuccess());
         break;
       case Error():
-        emit(LoginFailure(e.toString()));
+        emit(LoginFailure(result.exception.toString()));
     }
   }
 
@@ -41,7 +41,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(SignupSuccess());
         break;
       case Error():
-        emit(SignupFailure(e.toString()));
+        emit(SignupFailure(result.exception.toString()));
     }
   }
 }

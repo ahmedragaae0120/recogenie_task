@@ -36,6 +36,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.singleton<_i1025.FirebaseManager>(() => _i1025.FirebaseManager());
     gh.factory<_i1048.LoginDatasource>(
         () => _i954.LoginDatasourceImpl(gh<_i1025.FirebaseManager>()));
     gh.factory<_i504.RegisterDatasource>(
