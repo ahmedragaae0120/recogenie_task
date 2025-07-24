@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recogenie_task/config/app_theme.dart';
+import 'package:recogenie_task/core/utils/app_routes.dart';
+import 'package:recogenie_task/ui/auth/signup/signup_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -7,9 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Restaurant App',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
-        home: const Scaffold(body: Center(child: Text('Hello, Flutter!'))));
+      title: 'Restaurant App',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      initialRoute: AppRoutes.signup,
+      routes: AppRoutes.routes,
+    );
   }
 }

@@ -5,6 +5,9 @@ class AppStrings {
   static const String password = 'Password';
   static const String confirmPassword = 'Confirm Password';
   static const String forgotPassword = 'Forgot Password?';
+  static const String enterYourEmail = 'Enter your email';
+  static const String enterYourPassword = 'Enter your password';
+  static const String confirmYourPassword = 'Confirm your password';
   static const String submit = 'Submit';
   static const String welcome = 'Welcome to RecogNIE';
   static const String home = 'Home';
