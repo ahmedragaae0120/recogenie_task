@@ -1,0 +1,19 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_declarations: true
+
+    avoid_print: true
+
+    always_use_package_imports: true
+
+    prefer_single_quotes: true
+    unnecessary_this: true
+    sort_constructors_first: true
+    avoid_unnecessary_containers: true
+    prefer_final_locals: true
+    unnecessary_late: true
+    sort_child_properties_last: true
