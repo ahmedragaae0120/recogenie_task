@@ -15,7 +15,7 @@ jobs:
           echo "Branch name is ${{ github.head_ref }}"
           if [[ ! "${{ github.head_ref }}" =~ ^(feature|bugfix|hotfix|release)/[a-zA-Z0-9_-]+$ ]]; then
             echo "❌ Branch name '${{ github.head_ref }}' is invalid."
-            echo "✅ It should match: feature/ECOM-27-Initialize-Project"
+            echo "✅ It should match: feature/Initialize-Project"
             exit 1
           else
             echo "✅ Branch name is valid."
