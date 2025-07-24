@@ -17,6 +17,8 @@ class AppStrings {
   static const String cart = 'Cart';
   static const String dontHaveAnAccountYet = 'Dont have an account yet ?';
   static const String alreadyHaveAnAccount = 'Already have an account ?';
+  static const String loginSucessfully = 'Login successfully';
+  static const String registerSucessfully = 'Register successfully';
 
   //validation messages
   static const String emailCantBeEmpty = 'Email cannot be empty';
