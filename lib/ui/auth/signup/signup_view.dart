@@ -42,6 +42,7 @@ class _SignupViewState extends State<SignupView> {
             toastMessage(
                 message: AppStrings.registerSucessfully,
                 tybeMessage: TybeMessage.positive);
+            Navigator.pushReplacementNamed(context, AppRoutes.login);
           } else if (state is SignupFailure) {
             toastMessage(
                 message: state.error, tybeMessage: TybeMessage.negative);
@@ -87,6 +88,7 @@ class _SignupViewState extends State<SignupView> {
                           value, _passwordController.text),
                       controller: _confirmPasswordController,
                     ),
+                    Config.spaceMedium,
                     ElevatedButton(
                       onPressed: () {
                         register();
