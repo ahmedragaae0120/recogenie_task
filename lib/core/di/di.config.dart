@@ -18,14 +18,12 @@ import '../../data/data_source_contract/get_products_datasource.dart' as _i651;
 import '../../data/data_source_impl/get_products_datasource_impl.dart' as _i633;
 import '../../data/data_source_impl/login_datasource_impl.dart' as _i954;
 import '../../data/data_source_impl/register_datasource_impl.dart' as _i77;
-import '../../data/repo_impl/get_products_repo_impl.dart' as _i75;
 import '../../data/repo_impl/login_repo_impl.dart' as _i886;
 import '../../data/repo_impl/register_repo_impl.dart' as _i357;
 import '../../domain/repo_contract/get_products_repo.dart' as _i1052;
 import '../../domain/repo_contract/login_repo.dart' as _i496;
 import '../../domain/repo_contract/register_repo.dart' as _i513;
-import '../../domain/use_cases/get_Porducts_usecase.dart' as _i960;
-import '../../domain/use_cases/get_porducts_usecase.dart' as _i423;
+import '../../domain/use_cases/get_products_usecase.dart' as _i852;
 import '../../domain/use_cases/login_usecase.dart' as _i645;
 import '../../domain/use_cases/register_usecase.dart' as _i328;
 import '../../ui/auth/view_model/auth_cubit.dart' as _i538;
@@ -48,22 +46,19 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i633.GetProductsDatasourceImpl(gh<_i1025.FirebaseManager>()));
     gh.factory<_i1048.LoginDatasource>(
         () => _i954.LoginDatasourceImpl(gh<_i1025.FirebaseManager>()));
+    gh.factory<_i244.MenuCubit>(() => _i244.MenuCubit(gh<InvalidType>()));
     gh.factory<_i504.RegisterDatasource>(
         () => _i77.RegisterDatasourceImpl(gh<_i1025.FirebaseManager>()));
     gh.factory<_i1052.GetProductsRepo>(
-        () => _i75.GetProductsRepoImpl(gh<_i651.GetProductsDatasource>()));
+        () => GetProductsRepoImpl(gh<_i651.GetProductsDatasource>()));
     gh.factory<_i513.RegisterRepo>(
         () => _i357.RegisterRepoImpl(gh<_i504.RegisterDatasource>()));
-    gh.factory<_i960.GetPorductsUsecase>(
-        () => _i960.GetPorductsUsecase(gh<_i1052.GetProductsRepo>()));
-    gh.factory<_i423.GetPorductsUsecase>(
-        () => _i423.GetPorductsUsecase(gh<_i1052.GetProductsRepo>()));
+    gh.factory<_i852.GetPorductsUsecase>(
+        () => _i852.GetPorductsUsecase(gh<_i1052.GetProductsRepo>()));
     gh.factory<_i496.LoginRepo>(
         () => _i886.LoginRepoImpl(gh<_i1048.LoginDatasource>()));
     gh.factory<_i645.LoginUseCase>(
         () => _i645.LoginUseCase(gh<_i496.LoginRepo>()));
-    gh.factory<_i244.MenuCubit>(
-        () => _i244.MenuCubit(gh<_i423.GetPorductsUsecase>()));
     gh.factory<_i328.RegisterUsecase>(
         () => _i328.RegisterUsecase(gh<_i513.RegisterRepo>()));
     gh.factory<_i538.AuthCubit>(() => _i538.AuthCubit(

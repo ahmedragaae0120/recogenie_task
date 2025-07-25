@@ -1,15 +1,4 @@
 class ProductModel {
-  ProductModel({
-    this.id,
-    this.name,
-    this.price,
-    this.imageUrl,
-  });
-  final String? id;
-  final String? name;
-  final double? price;
-  final String? imageUrl;
-
   factory ProductModel.fromJson(Map<String, dynamic>? json, String? id) {
     if (json == null) return ProductModel();
 
@@ -20,6 +9,16 @@ class ProductModel {
       imageUrl: json['imageUrl'] as String?,
     );
   }
+  ProductModel({
+    this.id,
+    this.name,
+    this.price,
+    this.imageUrl,
+  });
+  final String? id;
+  final String? name;
+  final double? price;
+  final String? imageUrl;
 
   Map<String, dynamic> toJson() {
     return {

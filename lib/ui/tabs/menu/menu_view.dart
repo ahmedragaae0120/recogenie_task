@@ -18,7 +18,6 @@ class MenuView extends StatelessWidget {
             color: theme.primaryColor,
           ));
         } else if (state is MenuLoaded) {
-          print("Successfully💚💚 loaded products: ${state.products?.length}");
           return ListView.builder(
             itemCount: state.products?.length ?? 0,
             itemBuilder: (context, index) {
@@ -29,7 +28,11 @@ class MenuView extends StatelessWidget {
         } else if (state is MenuError) {
           return Center(child: Text(state.message));
         }
-        return const Center(child: Text('No products available'));
+        return Center(
+            child: Text(
+          'No products available',
+          style: theme.textTheme.headlineLarge,
+        ));
       },
     );
   }

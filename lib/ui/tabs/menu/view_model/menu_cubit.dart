@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:recogenie_task/core/result.dart';
 import 'package:recogenie_task/data/model/product_model.dart';
-import 'package:recogenie_task/domain/use_cases/get_porducts_usecase.dart';
+import 'package:recogenie_task/domain/use_cases/get_products_usecase.dart';
 
 part 'menu_state.dart';
 
