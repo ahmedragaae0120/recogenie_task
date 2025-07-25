@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949960688501",
+    "project_id": "recongenietask",
+    "storage_bucket": "recongenietask.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949960688501:android:ca9862f452102faa10493c",
+        "android_client_info": {
+          "package_name": "com.example.recogenie_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk_0ZJ3XHtpV7-XPQdrj0zKxiuszA7hqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
