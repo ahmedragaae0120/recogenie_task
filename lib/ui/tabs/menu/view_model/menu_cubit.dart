@@ -8,6 +8,7 @@ part 'menu_state.dart';
 
 @injectable
 class MenuCubit extends Cubit<MenuState> {
+  @factoryMethod
   MenuCubit(this._getPorductsUsecase) : super(MenuInitial());
   final GetPorductsUsecase _getPorductsUsecase;
 
