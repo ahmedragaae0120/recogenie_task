@@ -25,8 +25,8 @@ void toastMessage({required String message, required TybeMessage tybeMessage}) {
       backgroundColor:
           tybeMessage == TybeMessage.positive ? Colors.green : Colors.red,
       webBgColor: tybeMessage == TybeMessage.positive
-          ? "linear-gradient(to right, #00FF00, #00AA00)"
-          : "linear-gradient(to right, #FF0000, #AA0000)",
+          ? 'linear-gradient(to right, #00FF00, #00AA00)'
+          : 'linear-gradient(to right, #FF0000, #AA0000)',
       textColor: Colors.white,
       fontSize: 16.0);
 }
