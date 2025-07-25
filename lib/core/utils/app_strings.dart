@@ -15,6 +15,7 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String logout = 'Logout';
   static const String cart = 'Cart';
+  static const String menu = 'Menu';
   static const String dontHaveAnAccountYet = 'Dont have an account yet ?';
   static const String alreadyHaveAnAccount = 'Already have an account ?';
   static const String loginSucessfully = 'Login successfully';
