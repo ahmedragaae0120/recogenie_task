@@ -4,6 +4,7 @@ import 'package:recogenie_task/core/di/di.dart';
 import 'package:recogenie_task/core/utils/app_strings.dart';
 import 'package:recogenie_task/ui/main/view_model/main_cubit.dart';
 import 'package:recogenie_task/ui/tabs/cart/cart_view.dart';
+import 'package:recogenie_task/ui/tabs/cart/view_model/cart_cubit.dart';
 import 'package:recogenie_task/ui/tabs/menu/menu_view.dart';
 import 'package:recogenie_task/ui/tabs/menu/view_model/menu_cubit.dart';
 
@@ -13,11 +14,21 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> tabs = [
-      BlocProvider(
-        create: (context) => getIt<MenuCubit>()..getProducts(),
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<MenuCubit>()..getProducts(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<CartCubit>(),
+          ),
+        ],
         child: const MenuView(),
       ),
-      const CartView(),
+      BlocProvider(
+        create: (context) => getIt<CartCubit>()..getCartItems(),
+        child: const CartView(),
+      ),
     ];
     return BlocProvider(
       create: (_) => MainCubit(),
