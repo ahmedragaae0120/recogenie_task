@@ -11,16 +11,16 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:recogenie_task/domain/use_cases/add_to_card_usecase.dart';
+import 'package:recogenie_task/core/services/firebase_manager.dart';
+import 'package:recogenie_task/data/data_source_impl/get_products_datasource_impl.dart';
+import 'package:recogenie_task/data/data_source_impl/login_datasource_impl.dart';
+import 'package:recogenie_task/data/data_source_impl/register_datasource_impl.dart';
 
 import '../../data/data_source_contract/auth/login_datasource.dart' as _i1048;
 import '../../data/data_source_contract/auth/register_datasource.dart' as _i504;
 import '../../data/data_source_contract/cart_datasource.dart' as _i823;
 import '../../data/data_source_contract/get_products_datasource.dart' as _i651;
 import '../../data/data_source_impl/cart_datasource_impl.dart' as _i1012;
-import '../../data/data_source_impl/get_products_datasource_impl.dart' as _i633;
-import '../../data/data_source_impl/login_datasource_impl.dart' as _i954;
-import '../../data/data_source_impl/register_datasource_impl.dart' as _i77;
 import '../../data/repo_impl/cart_repo_impl.dart' as _i372;
 import '../../data/repo_impl/get_products_repo_impl.dart' as _i75;
 import '../../data/repo_impl/login_repo_impl.dart' as _i886;
@@ -52,14 +52,14 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.singleton<_i1025.FirebaseManager>(() => _i1025.FirebaseManager());
+    gh.factory<_i1048.LoginDatasource>(
+        () => LoginDatasourceImpl(gh<FirebaseManager>()));
+    gh.factory<_i504.RegisterDatasource>(
+        () => RegisterDatasourceImpl(gh<FirebaseManager>()));
+    gh.factory<_i651.GetProductsDatasource>(
+        () => GetProductsDatasourceImpl(gh<FirebaseManager>()));
     gh.factory<_i823.CartDatasource>(
         () => _i1012.CartDatasourceImpl(gh<_i1025.FirebaseManager>()));
-    gh.factory<_i651.GetProductsDatasource>(
-        () => _i633.GetProductsDatasourceImpl(gh<_i1025.FirebaseManager>()));
-    gh.factory<_i1048.LoginDatasource>(
-        () => _i954.LoginDatasourceImpl(gh<_i1025.FirebaseManager>()));
-    gh.factory<_i504.RegisterDatasource>(
-        () => _i77.RegisterDatasourceImpl(gh<_i1025.FirebaseManager>()));
     gh.factory<_i1052.GetProductsRepo>(
         () => _i75.GetProductsRepoImpl(gh<_i651.GetProductsDatasource>()));
     gh.factory<_i513.RegisterRepo>(
@@ -71,7 +71,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i9.CartRepo>(
         () => _i372.CartRepoImpl(gh<_i823.CartDatasource>()));
     gh.factory<_i467.AddToCardUsecase>(
-        () => AddToCardUsecase(gh<_i9.CartRepo>()));
+        () => _i467.AddToCardUsecase(gh<_i9.CartRepo>()));
     gh.factory<_i156.GetCartItemsUsecase>(
         () => _i156.GetCartItemsUsecase(gh<_i9.CartRepo>()));
     gh.factory<_i599.RemoveFromCartUsecase>(

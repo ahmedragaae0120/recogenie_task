@@ -55,9 +55,9 @@ class CartItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          // زر الحذف
+
           ElevatedButton(
-            onPressed: onRemove, // استدعاء الدالة عند الضغط
+            onPressed: onRemove,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.grey.shade200,
               foregroundColor: theme.colorScheme.primary,

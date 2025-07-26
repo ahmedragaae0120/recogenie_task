@@ -27,19 +27,38 @@ class CartView extends StatelessWidget {
               ),
             );
           }
-          return ListView.builder(
-            itemCount: state.products.length,
-            itemBuilder: (context, index) {
-              return CartItemWidget(
-                name: state.products[index].name ?? '',
-                imageUrl: state.products[index].imageUrl ?? '',
-                quantity: 1,
-                onRemove: () {
-                  CartCubit.get(context)
-                      .removeFromCart(state.products[index].id ?? '');
-                },
-              );
-            },
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: state.products.length,
+                  itemBuilder: (context, index) {
+                    return CartItemWidget(
+                      name: state.products[index].name ?? '',
+                      imageUrl: state.products[index].imageUrl ?? '',
+                      quantity: 1,
+                      onRemove: () {
+                        CartCubit.get(context)
+                            .removeFromCart(state.products[index].id ?? '');
+                      },
+                    );
+                  },
+                ),
+              ),
+              Container(
+                height: 60,
+                color: theme.primaryColor,
+                child: Center(
+                  child: Text(
+                    'Total: ${CartCubit.get(context).total.toStringAsFixed(2)}',
+                    style: theme.textTheme.headlineMedium?.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            ],
           );
         } else if (state is CartError) {
           return Center(child: Text(state.message));

@@ -22,11 +22,15 @@ class CartCubit extends Cubit<CartState> {
   static CartCubit get(context) => BlocProvider.of(context);
 
   List<ProductModel> cartItemCache = [];
+  double total = 0;
   Future<void> getCartItems() async {
     emit(CartLoading());
     final result = await _getCartItemsUsecase();
     switch (result) {
       case Success():
+        result.data?.forEach((item) {
+          total += item.price ?? 0;
+        });
         cartItemCache = result.data ?? [];
         emit(CartLoaded(products: cartItemCache));
         break;
@@ -51,6 +55,7 @@ class CartCubit extends Cubit<CartState> {
     switch (result) {
       case Success():
         cartItemCache.removeWhere((item) => item.id == productId);
+        total = cartItemCache.fold(0, (sum, item) => sum + (item.price ?? 0));
         emit(CartLoaded(products: cartItemCache));
         // emit(CartItemRemoved());
         break;

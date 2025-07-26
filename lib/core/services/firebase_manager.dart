@@ -5,28 +5,30 @@ import 'package:recogenie_task/data/model/product_model.dart';
 
 @singleton
 class FirebaseManager {
+  final auth = FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance;
   Future<UserCredential> registerService(String email, String password) async {
-    return await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    return await auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
   Future<UserCredential> loginService(String email, String password) async {
-    return await FirebaseAuth.instance.signInWithEmailAndPassword(
+    return await auth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
-    return await FirebaseFirestore.instance.collection('menu').get();
+    return await firestore.collection('menu').get();
   }
 
   Future<void> addToCart(ProductModel product) async {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = auth.currentUser;
     if (user == null) throw Exception('User not logged in');
-    return await FirebaseFirestore.instance
+    return await firestore
         .collection('users')
         .doc(user.uid)
         .collection('cart')
@@ -35,10 +37,10 @@ class FirebaseManager {
   }
 
   Future<List<ProductModel>> getCartItems() async {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = auth.currentUser;
     if (user == null) throw Exception('User not logged in');
 
-    final snapshot = await FirebaseFirestore.instance
+    final snapshot = await firestore
         .collection('users')
         .doc(user.uid)
         .collection('cart')
@@ -50,12 +52,12 @@ class FirebaseManager {
   }
 
   Future<void> removeFromCart(String productId) async {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = auth.currentUser;
     if (user == null) {
       throw Exception('User not logged in');
     }
 
-    return await FirebaseFirestore.instance
+    return await firestore
         .collection('users')
         .doc(user.uid)
         .collection('cart')
