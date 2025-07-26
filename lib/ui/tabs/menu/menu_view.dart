@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recogenie_task/core/utils/toast_message.dart';
 import 'package:recogenie_task/data/model/product_model.dart';
+import 'package:recogenie_task/ui/tabs/cart/view_model/cart_cubit.dart';
 import 'package:recogenie_task/ui/tabs/menu/view_model/menu_cubit.dart';
 import 'package:recogenie_task/ui/tabs/menu/widgets/product_item_widget.dart';
 
@@ -18,12 +20,25 @@ class MenuView extends StatelessWidget {
             color: theme.primaryColor,
           ));
         } else if (state is MenuLoaded) {
-          return ListView.builder(
-            itemCount: state.products?.length ?? 0,
-            itemBuilder: (context, index) {
-              return ProductItemWidget(
-                  productModel: state.products?[index] ?? ProductModel());
+          return BlocListener<CartCubit, CartState>(
+            listener: (context, state) {
+              if (state is CartItemAdded) {
+                toastMessage(
+                    message: 'Added to cart',
+                    tybeMessage: TybeMessage.positive);
+              }
             },
+            child: ListView.builder(
+              itemCount: state.products?.length ?? 0,
+              itemBuilder: (context, index) {
+                return ProductItemWidget(
+                    onAddToCart: () {
+                      CartCubit.get(context)
+                          .addToCart(state.products?[index] ?? ProductModel());
+                    },
+                    productModel: state.products?[index] ?? ProductModel());
+              },
+            ),
           );
         } else if (state is MenuError) {
           return Center(child: Text(state.message));
